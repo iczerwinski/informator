@@ -15,19 +15,18 @@ INSERT INTO STUDY_MODE (ID, S, NP, NSN) VALUES (2, FALSE, TRUE, TRUE);
 
 INSERT INTO SCHOOL_TYPE (ID, NAME) VALUES (1, 'Policealna');
 INSERT INTO SCHOOL_TYPE (ID, NAME) VALUES (2, 'Wyższa');
-INSERT INTO SCHOOL_TYPE (ID, NAME) VALUES (3, 'Podyplomowa');
-INSERT INTO SCHOOL_TYPE (ID, NAME) VALUES (4, 'Językowa');
+INSERT INTO SCHOOL_TYPE (ID, NAME) VALUES (3, 'Językowa');
 
 INSERT INTO SCHOOL (ADDRESS, DESCRIPTION, FAX, IS_PUBLIC, LOGO_URL, NAME, PHONE, WWW, PROMO, CITY_ID, SCHOOL_TYPE_ID)
 VALUES ('ulica1', 'opis1', 'fax1', TRUE, 'www.logo.pl1', 'Wyższa szkoła1', 'Phone 1', 'www.ws.pl1', '656', 1, 2);
 INSERT INTO SCHOOL (ADDRESS, DESCRIPTION, FAX, IS_PUBLIC, LOGO_URL, NAME, PHONE, WWW, PROMO, CITY_ID, SCHOOL_TYPE_ID)
-VALUES ('ulica2', 'opis2', 'fax2', TRUE, 'www.logo.pl2', 'Wyższa szkoła2', 'Phone 2', 'www.ws.pl2', '33', 1, 2);
+VALUES ('ulica2', 'opis2', 'fax2', TRUE, 'http://imageshack.com/a/img924/8931/aPKphP.jpg', 'Akademia Leona Koźmińskiego', 'Phone 2', 'www.ws.pl2', '33', 1, 2);
 INSERT INTO SCHOOL (ADDRESS, DESCRIPTION, FAX, IS_PUBLIC, LOGO_URL, NAME, PHONE, WWW, PROMO, CITY_ID, SCHOOL_TYPE_ID)
-VALUES ('ulica3', 'opis3', 'fax3', TRUE, 'www.logo.pl3', 'Językowa szkoła3', 'Phone 3', 'www.ws.pl3', '21', 1, 4);
+VALUES ('ul. Chodakowska 19/31', 'SWPS Uniwersytet Humanistycznospołeczny to nowoczesne centrum naukowo-dydaktyczne, które oferuje interdyscyplinarne studia społeczno-humanistyczne. Od 19 lat uczelnia jest jednym z najważniejszych ośrodków studiów psychologicznych w kraju.', '22 517 96 25', TRUE, 'http://imageshack.com/a/img924/4769/az1eel.png', 'SWPS', '22 517 96 00', 'www.ws.pl3', '21', 1, 2);
 INSERT INTO SCHOOL (ADDRESS, DESCRIPTION, FAX, IS_PUBLIC, LOGO_URL, NAME, PHONE, WWW, PROMO, CITY_ID, SCHOOL_TYPE_ID)
-VALUES ('ulica4', 'opis4', 'fax4', TRUE, 'www.logo.pl4', 'Językowa szkoła4', 'Phone 4', 'www.ws.pl4', '23', 1, 4);
+VALUES ('ulica4', 'opis4', 'fax4', TRUE, 'www.logo.pl4', 'Językowa szkoła4', 'Phone 4', 'www.ws.pl4', '23', 1, 3);
 INSERT INTO SCHOOL (ADDRESS, DESCRIPTION, FAX, IS_PUBLIC, LOGO_URL, NAME, PHONE, WWW, PROMO, CITY_ID, SCHOOL_TYPE_ID)
-VALUES ('ulica5', 'opis5', 'fax5', TRUE, 'www.logo.pl5', 'Językowa szkoła5', 'Phone 5', 'www.ws.pl5', '22', 2, 4);
+VALUES ('ulica5', 'opis5', 'fax5', TRUE, 'imageshack.com/a/img924/4769/az1eel.png', 'Językowa szkoła5', 'Phone 5', 'www.ws.pl5', '22', 2, 3);
 
 
 INSERT INTO FACULTY (ID, NAME) VALUES (1, 'Matematyka');

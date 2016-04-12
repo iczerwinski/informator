@@ -1793,6 +1793,10 @@ div.price_single a {
         width: 250px !important;
         height: 250px !important;
     }
+    .logourl {
+        width: 250px !important;
+        height: 250px !important;
+    }
 
     span.text-left a {
         color: #fff;

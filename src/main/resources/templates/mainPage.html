@@ -55,14 +55,13 @@
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
                                             <li><a href="#">Wyższe</a></li>
-                                            <li><a href="#">Podyplomowe</a></li>
                                             <li><a href="#">Policealne</a></li>
                                             <li><a href="#">Językowe</a></li>
                                         </ul>
                                     </div>
                                 </li>
-                                <li><a href="about.html">Wyszukiwarka</a></li>
-                                <li><a href="contact.html">Kontakt</a></li>
+                                <li><a href="wyszukiwarka.html">Wyszukiwarka</a></li>
+                                <li><a href="kontakt.html">Kontakt</a></li>
                             </ul>
                         </div>
                     </div>
@@ -134,18 +133,17 @@
                         <div class="portfolio-wrapper">
                             <a data-toggle="modal" data-target=".bs-example-modal-md" href="#"
                                class="b-link-stripe b-animate-go  thickbox">
-                                <img src="web/images/cont1.jpg"/>
+
+                          <div class="logourl"> <img th:src="${school.logoUrl}" /></div>
                                 <div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img
                                         src="web/images/link-ico.png" alt=""/></h2>
                                 </div>
                             </a>
                         </div>
                     </div>
-                    <p class="text-center">
-                    </p>
-                    <a th:text="${school.name}" th:href="@{school/{id}/(id=${school.id})}"/>
-                    <h2 class="text-center">$350.00</h2>
-                    <p class="text-center"><a href="school.html">Zobacz</a></p>
+                    <p class="text-center"></p>
+                    <h2 class="text-center"> <a th:text="${school.name}" th:href="@{school/{id}/(id=${school.id})}"></a></h2>
+                    <p class="text-center"><a th:href="@{school/{id}/(id=${school.id})}">Zobacz</a></p>
                 </div>
             </div>
         </div>
