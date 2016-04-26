@@ -1,0 +1,355 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <title th:text="${school.name}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link href="http://localhost:8080/web/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+    <link href="http://localhost:8080/web/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link href="http://localhost:8080/web/css/theme.css" rel='stylesheet' type='text/css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300' rel='stylesheet' type='text/css'/>
+    <script type="text/javascript" src="web/js/jquery.min.js"></script>
+    <script type="text/javascript" src="http://localhost:8080/web/js/bootstrap.js"></script>
+    <script type="text/javascript" src="http://localhost:8080/web/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://localhost:8080/web/js/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="http://localhost:8080/web/css/etalage.css"/>
+    <script src="http://localhost:8080/web/js/jquery.etalage.min.js"></script>
+    <script>
+        jQuery(document).ready(function($){
+
+            $('#etalage').etalage({
+                thumb_image_width: 300,
+                thumb_image_height: 400,
+
+                show_hint: true,
+                click_callback: function(image_anchor, instance_id){
+                    alert('Callback example:\nYou clicked on an image with the anchor: "'+image_anchor+'"\n(in Etalage instance: "'+instance_id+'")');
+                }
+            });
+            // This is for the dropdown list example:
+            $('.dropdownlist').change(function(){
+                etalage_show( $(this).find('option:selected').attr('class') );
+            });
+
+        });
+    </script>
+</head>
+<body>
+<div class="header-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="logo"><a href="localhost:8080"><img src="web/images/logo.png" alt=""/></a></div>
+            </div>
+            <div class="col-md-8">
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="container-fluid">
+                        <div class="navbar-header"><span class="text-left"><a href="#">MENU</a></span>
+                            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                    data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    <div class="btn-group show-on-hover">
+                                        <button type="button" class="btn btn-default dropdown-toggle"
+                                                data-toggle="dropdown">
+                                            Spis Uczelni<span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href="/search?schoolTypeId=1">Wyższe</a></li>
+                                            <li><a href="/search?schoolTypeId=2">Policealne</a></li>
+                                            <li><a href="/search?schoolTypeId=3">Językowe</a></li>
+
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li><a th:text="'Wyszukiwarka'" th:href="@{~/searcher.html}"/></li>
+
+                                <li><a href="artykuly.html">Artykuły</a></li>
+                                <li><a href="contact.html">Kontakt</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </nav>                <!--<div class="right">-->
+                <!--<ul class="list-unstyled">-->
+                <!--&lt;!&ndash;<li class="a text-left"><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a>&ndash;&gt;-->
+                <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                <!--<li><a href="contact.html">Kontakt</a></li>-->
+                <!--<li><a href="artykuly.html">Artykuły</a></li>                    </ul>-->
+                <!--</div>-->
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<div class="single">
+    <div class="container">
+        <div class="rsidebar span_1_of_left">
+            <section class="sky-form">
+                <div class="sidebar_school">
+                    <h4>Miasta</h4>
+                    <div class="row row1 scroll-pane" style="overflow: hidden; padding: 0px; width: 283px;">
+
+                        <div class="web/jspContainer" style="width: 283px; ">
+                            <div class="web/jspPane" style="padding: 20px; top: 0px; left: 0px; width: 243px;">
+                                <div class="col col-4">
+                                    <ul>
+
+                                        <li th:each="city: ${cities}"><a th:text="${city.name }"
+                                                                         th:href="@{/list/city/{id}/(id=${city.id})}"/></li>
+                                    </ul>
+                                </div><div class="col col-4">
+
+                            </div></div></div></div></div>
+                <div class="sidebar_school">
+                    <h4>Popularne kierunki</h4>
+                    <div class="row row1 scroll-pane" style="overflow: hidden; padding: 0px; width: 283px;">
+                        <div class="web/jspContainer" style="width: 283px;">
+                            <div class="web/jspPane" style="padding: 20px; top: 0px; left: 0px; width: 243px;">
+                                <ul>
+                                    <li th:each="faculty: ${faculties}"><a th:text="${faculty.name + '(' + faculty.count  + ')'}"
+                                                                           th:href="@{/list/faculty/{id}(id=${faculty.id})}"/></li>
+
+                                </ul>
+                                <div class="col col-4">
+                                </div><div class="col col-4">
+
+                            </div></div></div></div></div>
+                <h4>Inne uczelnie w mieście</h4>
+                <div class="row row1 scroll-pane" style="overflow: hidden; padding: 0px; width: 283px;">
+
+
+                    <div class="web/jspContainer" style="width: 283px; height: 200px;"><div class="web/jspPane" style="padding: 20px; top: 0px; left: 0px; width: 243px;"><div class="col col-4">
+                        <ul>   <li th:each="school: ${similar}"><a th:text="${school.name}" th:href="@{/school/{id}/(id=${school.id})}"/></li>
+                        </ul>
+                        <!--<ul>   <li th:each="departments: ${departments}"><a th:text="${school.department}" th:href="@{/school/{id}/(id=${school.id})}"/></li>-->
+                        <!--</ul>-->
+                    </div></div></div></div>
+            </section>
+        </div>
+        <div class="cont span_2_of_3">
+            <div class="labout span_1_of_a1">
+                <!-- start product_slider -->
+                <ul id="etalage">
+                    <li>
+                        <a href="optionallink.html">
+                            <img class="etalage_thumb_image" th:src="${school.logoUrl}"/>
+                            <img class="etalage_source_image" th:src="${school.logoUrl}"/>
+                        </a>
+                    </li>
+                    <!--<li>-->
+                    <!--<img class="etalage_thumb_image" th:src="${school.logoUrl}" />-->
+                    <!--<img class="etalage_thumb_image" th:src="${school.logoUrl}" />-->
+                    <!--</li>-->
+                    <!--<li>-->
+                    <!--<img class="etalage_thumb_image" th:src="${school.logoUrl}" />-->
+                    <!--<img class="etalage_source_image" th:src="${school.logoUrl}"/>-->
+                    <!--</li>-->
+                    <li>
+                        <img class="etalage_thumb_image" th:src="${school.gallery.photo1}"/>
+                        <img class="etalage_source_image" th:src="${school.gallery.photo1}"/>
+                    </li>
+                    <li>
+                        <img class="etalage_thumb_image" th:src="${school.gallery.photo2}"/>
+                        <img class="etalage_source_image" th:src="${school.gallery.photo2}"/>
+                    </li>
+                    <li>
+                        <img class="etalage_thumb_image" th:src="${school.gallery.photo3}"/>
+                        <img class="etalage_source_image" th:src="${school.gallery.photo3}"/>
+                    </li>
+                    <li>
+                        <img class="etalage_thumb_image" th:src="${school.gallery.photo4}"/>
+                        <img class="etalage_source_image" th:src="${school.gallery.photo4}"/>
+                    </li>
+                </ul>
+
+
+                <!-- end product_slider -->
+            </div>
+            <div class="cont1 span_2_of_a1 pull-right">
+                <h3 class="m_3" th:text="${school.name}"></h3>
+
+                <div class="price_single">
+                    <!--<span class="reducedfrom">$66.00</span>-->
+
+                    <span class="actual" th:if="${school.isPublic} == false" th:text="'Uczelnia '+'Niepubliczna' "/>
+                    <span class="actual" th:if="${school.isPublic} == true" th:text="'Uczelnia '+'Publiczna'"/>
+
+                </div>
+                <!--<p class="text-center" th:if="${school.isPublic} == false" th:text="Uczelnia + Niepubliczna"/>-->
+                <!--<p class="text-center" th:if="${school.isPublic} == true" th:text="Uczelnia + Publiczna"/>-->
+                <ul class="options list-unstyled">
+                    <h4 class="m_9" th:text="${school.name}"/>
+                    <!--<li><a href="#">Dostępne Kierunki</a></li>-->
+                    <li><a th:text="'Dane '+'teleadresowe'" th:href="@{~/school/{id}/(id=${school.id})}"/></li>
+                    <li><a th:text="'Oferta '+'edukacyjna'" th:href="@{~/offer/{id}/(id=${school.id})}"/></li>
+                    <li><a href="#">Tryby studiów</a></li>
+                    <li><a href="#">Opinie</a></li>
+                    <div class="clearfix"></div>
+                </ul>
+                <div class="btn_form">
+                    <form>
+                        <input type="submit" value="obserwuj" title=""/>
+                    </form>
+                </div>
+                <ul class="add-to-links list-unstyled">
+                    <li>     <img src="http://localhost:8080/web/images/wish.png" alt=""/><a href="#">Oferta</a>
+                    </li>
+                </ul>
+                <p class="m_desc"  th:each="schoolFaculty: ${schoolFaculties}"  th:text="${schoolFaculty.name}" />
+                <!--<p class="m_desc"  li th:each="schoolFaculty: ${schoolFaculties}"  th:text="${schoolFaculty.name}"/>-->
+                <p class="m_desc" />
+                <p class="m_desc" />
+
+                <!--<p class="m_desc"><a th:text="${school.www}" th:href="@{${school.www}}"/></p>-->
+                <ul>
+                    <li th:each="schoolFaculty: ${schoolFaculties}"  th:text="${schoolFaculty.name}" />
+                </ul>
+                <ul>
+                <li th:each="schoolDepartments: ${schoolDepartments}"><a th:text="${schoolDepartment.name}"
+                                                            th:href="@{/dsajisod.html}"/></li>
+                </ul>
+                <!--<ul>-->
+                    <!--<li th:each="department: ${departments}"  th:text="${department.name}" />-->
+                <!--</ul>-->
+                <div class="social_single">
+
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="toogle">
+            <h3 class="m_3">Opis</h3>
+            <p class="m_text" th:text="${school.description}"/>
+        </div>d
+        <div class="toogle">
+            <h3 class="m_3">Informacja 2 </h3>
+            <p class="m_text"></p>
+        </div>
+    </div>
+
+    <div class="nbs-flexisel-container" th:each="school: ${school}" th:unless="${schoolStat.index > 4}">
+        <div class="nbs-flexisel-inner">
+            <ul id="flexiselDemo3" class="nbs-flexisel-ul" style="left: -195.2px; display: block;">
+
+
+                <li class="nbs-flexisel-item" style="width: 195.2px;"><img src="http://localhost:8080/web/images/pic9.jpg"/><div class="grid-flex"><a href="#">Zumba</a><p>Rs 850</p></div></li><li class="nbs-flexisel-item" style="width: 195.2px;"><img src="web/images/pic8.jpg"/><div class="grid-flex"><a href="#">Bloch</a><p>Rs 850</p></div></li><li class="nbs-flexisel-item" style="width: 195.2px;"><img src="web/images/pic7.jpg"/><div class="grid-flex"><a href="#">Capzio</a><p>Rs 850</p></div></li><li class="nbs-flexisel-item" style="width: 195.2px;"><img src="web/images/pic11.jpg"/><div class="grid-flex"><a href="#">Bloch</a><p>Rs 850</p></div></li><li class="nbs-flexisel-item" style="width: 195.2px;"><img src="web/images/pic10.jpg"/><div class="grid-flex"><a href="#">Capzio</a><p>Rs 850</p></div></li><li class="nbs-flexisel-item" style="width: 195.2px;"><img src="web/images/pic9.jpg"/><div class="grid-flex"><a href="#">Zumba</a><p>Rs 850</p></div></li><li class="nbs-flexisel-item" style="width: 195.2px;"><img src="web/images/pic8.jpg"/><div class="grid-flex"><a href="#">Bloch</a><p>Rs 850</p></div></li><li class="nbs-flexisel-item" style="width: 195.2px;"><img src="web/images/pic7.jpg"/><div class="grid-flex"><a href="#">Capzio</a><p>Rs 850</p></div></li><li class="nbs-flexisel-item" style="width: 195.2px;"><img src="web/images/pic11.jpg"/><div class="grid-flex"><a href="#">Bloch</a><p>Rs 850</p></div></li><li class="nbs-flexisel-item" style="width: 195.2px;"><img src="web/images/pic10.jpg"/><div class="grid-flex"><a href="#">Capzio</a><p>Rs 850</p></div></li></ul><div class="nbs-flexisel-nav-left" style="top: 74px;"></div><div class="nbs-flexisel-nav-right" style="top: 74px;"></div></div>
+
+        <script type="text/javascript">
+            $(window).load(function() {
+                $("#flexiselDemo1").flexisel();
+                $("#flexiselDemo2").flexisel({
+                    enableResponsiveBreakpoints: true,
+                    responsiveBreakpoints: {
+                        portrait: {
+                            changePoint:480,
+                            visibleItems: 1
+                        },
+                        landscape: {
+                            changePoint:640,
+                            visibleItems: 2
+                        },
+                        tablet: {
+                            changePoint:768,
+                            visibleItems: 3
+                        }
+                    }
+                });
+
+                $("#flexiselDemo3").flexisel({
+                    visibleItems: 5,
+                    animationSpeed: 1000,
+                    autoPlay: true,
+                    autoPlaySpeed: 3000,
+                    pauseOnHover: true,
+                    enableResponsiveBreakpoints: true,
+                    responsiveBreakpoints: {
+                        portrait: {
+                            changePoint:480,
+                            visibleItems: 1
+                        },
+                        landscape: {
+                            changePoint:640,
+                            visibleItems: 2
+                        },
+                        tablet: {
+                            changePoint:768,
+                            visibleItems: 3
+                        }
+                    }
+                });
+
+            });
+        </script>
+        <script type="text/javascript" src="web/js/jquery.flexisel.js"></script>
+
+        <div class="clearfix"></div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="list-inline pull-left">
+                        <li><a href="#">Terms of Services</a></li>
+                        <li><a href="#">Refunds</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                    <form class="navbar-form pull-right" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search"/>
+                        </div>
+                        <button type="Find" class="btn btn-default">Find</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copy-right text-center">
+            </div>
+        </div>
+    </div>
+</div>
+<h2 th:text="${school.name}" />c
+<div th:text="${school.logoUrl}" />
+<div th:text="${school.address}" />
+<div th:text="${school.isPublic}" />
+<div th:text="${school.city.name}" />
+<div th:text="${school.phone}" />
+<div th:text="${school.fax}" />
+<div th:text="${school.www}" />
+<div th:text="${school.description}" />
+
+
+<ul>
+    <li th:each="schoolFaculty: ${schoolFaculties}"  th:text="${schoolFaculty.name}" />
+</ul>
+<div th:if="${school.isPublic} == true">Publiczna</div>
+<div th:if="${school.isPublic} == false">Niepubliczna</div>
+
+<!--dla zakladki kierunki <ul>-->
+<!--<li th:each="schoolFaculty: ${schoolFaculties}"  th:text="${schoolFaculty.name}" />-->
+<!--th:href="@{/list/faculty/{id}/(id=${faculty.id})}"/></li>-->
+
+<!--</ul>-->
+Miasta:
+<ul>
+    <li th:each="city: ${cities}"><a th:text="${city.name }"
+    /></li>
+</ul>
+
+</body>
+</html>
