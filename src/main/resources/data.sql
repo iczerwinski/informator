@@ -38,6 +38,7 @@ INSERT INTO FACULTY (ID, NAME) VALUES (6, 'Filologia angielska');
 INSERT INTO FACULTY (ID, NAME) VALUES (7, 'Iberystyka');
 INSERT INTO FACULTY (ID, NAME) VALUES (8, 'Chemia');
 INSERT INTO FACULTY (ID, NAME) VALUES (9, 'Mechatronika');
+INSERT INTO FACULTY (ID, NAME) VALUES (10, 'Filologia niemiecka');
 
 
 
