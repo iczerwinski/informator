@@ -1,7 +1,7 @@
 package com.demo.controller;
 
 import com.demo.dto.SchoolRequestDto;
-import com.demo.entity.SchoolType;
+import com.demo.service.CityService;
 import com.demo.service.FacultyService;
 import com.demo.service.SchoolService;
 import com.demo.service.SchoolTypeService;
@@ -21,6 +21,8 @@ public class SchoolController {
     private FacultyService facultyService;
     @Autowired
     private SchoolTypeService schoolTypeService;
+    @Autowired
+    private CityService cityService;
 
     @RequestMapping(method = RequestMethod.POST)
     public ModelAndView addNewSchool(@RequestBody SchoolRequestDto newSchool) {
@@ -31,6 +33,7 @@ public class SchoolController {
     @RequestMapping(method = RequestMethod.GET, value = "/{id}/edit")
     public String editPage(Model model, @PathVariable(value = "id") Integer schoolId) {
         model.addAttribute("school", schoolService.get(schoolId));
+        model.addAttribute("cities", cityService.getCities());
         return "schoolEdit";
     }
 
@@ -41,12 +44,21 @@ public class SchoolController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
-    public String schoolInfoPage(Model model, @PathVariable(value = "id") Integer schoolId) {
+    public String schoolInfoPage(Model model, @PathVariable(value = "id") Integer schoolId, Integer cityId) {
         model.addAttribute("school", schoolService.get(schoolId));
         model.addAttribute("schoolFaculties", facultyService.getBySchoolId(schoolId));
+        model.addAttribute("cities", cityService.getCities());
+        model.addAttribute("schoolTypes", schoolTypeService.getSchoolTypes());
+        model.addAttribute("faculties", facultyService.findFaculties());
+//        model.addAttribute("similar", schoolService.getSchoolsByCityId(cityId));
         return "school";
     }
 
-
+//    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
+//    public String sidebarsimilar(Model model, @PathVariable(value = "id") Integer schoolId, Integer cityId) {
+//        model.addAttribute("similar", schoolService.getSchoolsByCityId(cityId));
+//        model.addAttribute("school", schoolService.get(schoolId));
+//        return "school";
+//    }
 
 }

@@ -31,7 +31,7 @@ div.logo {
 .navbar-default {
     background-color: #333;
     border-color: #333;
-    width: 50%;
+    width: 80%;
     float: left;
 }
 
@@ -394,7 +394,7 @@ button.close {
 }
 
 .grid1 {
-    width: 50%;
+    width: 90%;
     font-family: 'Open Sans', 'sans-serif';
     line-height: 1.9em;
 }
@@ -1793,10 +1793,6 @@ div.price_single a {
         width: 250px !important;
         height: 250px !important;
     }
-    .logourl {
-        width: 250px !important;
-        height: 250px !important;
-    }
 
     span.text-left a {
         color: #fff;
@@ -1872,4 +1868,63 @@ div.price_single a {
         margin-left: 9%;
         width: 84%;
     }
+}
+
+.a {
+    color: #545455;
+!important;
+}
+
+.logos {
+    max-height: 200px;
+    max-width: 200px;
+
+}
+
+.top ul.nav li a, ul.nav li a:visited {
+    color: #545455 !important;
+}
+
+.top ul.nav li a:hover, ul.nav li a:active {
+    color: #545455 !important;
+}
+
+.top a {
+    color: #545455 !important;
+}
+
+.thumbnail {
+    max-height: 100px;
+    max-width: 100px;
+    float: left;
+
+}
+
+.list {
+    float: left;
+    line-height: 100px;
+
+}
+
+#list ul.nav li a, ul.nav li a:visited {
+    color: #545455 !important;
+}
+
+#list ul.nav li a:hover, ul.nav li a:active {
+    color: #545455 !important;
+}
+
+#list a {
+    color: #545455 !important;
+}
+.sidebar_school a {
+    color: #4f8173 !important;
+
+}
+.sidebar_school ul.nav li a, ul.nav li a:visited {
+    color: #4f8173 !important;
+}
+
+.sidebar_school ul.nav li a:hover, ul.nav li a:active {
+    color: #4f8173 !important;
 }
